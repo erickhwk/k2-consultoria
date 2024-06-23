@@ -1,5 +1,5 @@
 class LawFirm < ApplicationRecord
-    # validates :name, :cnpj, presence: true
+    validates :name, :cnpj, presence: true
     validate :there_can_only_be_one
 
     private
