@@ -2,10 +2,10 @@ require "cpf_cnpj"
 
 class LawFirm < ApplicationRecord
     validates :name, :cnpj, presence: true
+    validates :contact_email, presence: true, email: true
     validate :there_can_only_be_one
     validate :valid_cnpj
 
-    
     private
     
     def valid_cnpj

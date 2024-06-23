@@ -73,3 +73,4 @@ group :test do
 end
 
 gem 'cpf_cnpj'
+gem 'email_validator'

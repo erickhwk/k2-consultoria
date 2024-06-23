@@ -90,6 +90,8 @@ GEM
       reline (>= 0.3.1)
     diff-lcs (1.5.1)
     digest (3.1.0)
+    email_validator (2.2.4)
+      activemodel
     erubi (1.10.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -241,6 +243,7 @@ DEPENDENCIES
   capybara
   cpf_cnpj
   debug
+  email_validator
   importmap-rails
   jbuilder
   pg (~> 1.1)
