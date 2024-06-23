@@ -10,9 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 0) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_23_015535) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "timescaledb"
+
+  create_table "law_firms", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "cnpj", null: false
+    t.string "contact_email"
+    t.string "address_street"
+    t.string "address_complement"
+    t.string "address_city"
+    t.string "address_state"
+    t.string "address_zip_code"
+    t.string "address_country"
+    t.string "logo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
