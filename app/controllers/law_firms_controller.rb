@@ -1,9 +1,8 @@
 class LawFirmsController < ApplicationController
   before_action :set_law_firm, only: [:show, :edit, :update]
+  before_action :authenticate_user!
 
-  def index
-    @law_firms = LawFirm.all
-  end
+
   def show
   end
 
@@ -14,6 +13,7 @@ class LawFirmsController < ApplicationController
   def create
     @law_firm = LawFirm.new(law_firm_params)
     if @law_firm.save
+      @law_firm.update_user_association(current_user)
       redirect_to @law_firm, notice: 'Law Firm was successfully created.'
     else
       render :new, status: :unprocessable_entity

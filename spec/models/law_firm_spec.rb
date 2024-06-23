@@ -58,5 +58,11 @@ RSpec.describe LawFirm, type: :model do
         expect(law_firm.errors[:cnpj]).to include("is not valid")
     end
 
-
+    it 'associates a user with the law firm' do
+        user = User.new(email: "test@example.com", password: "password", role: "admin")
+        law_firm = LawFirm.new(name: 'Example Law Firm', cnpj: CNPJ.generate, contact_email: "test@example.com")
+        law_firm.save
+        law_firm.update_user_association(user)
+        expect(user.law_firm).to eq(law_firm)
+    end
 end

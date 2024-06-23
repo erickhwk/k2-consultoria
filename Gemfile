@@ -75,3 +75,4 @@ end
 
 gem 'cpf_cnpj'
 gem 'email_validator'
+gem "devise", "~> 4.9"
