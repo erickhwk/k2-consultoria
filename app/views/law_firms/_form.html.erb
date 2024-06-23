@@ -1,0 +1,66 @@
+<%= form_for(@law_firm) do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cnpj %>
+    <%= f.text_field :cnpj %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contact_email %>
+    <%= f.email_field :contact_email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address_street %>
+    <%= f.text_field :address_street %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address_complement %>
+    <%= f.text_field :address_complement %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address_city %>
+    <%= f.text_field :address_city %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address_state %>
+    <%= f.text_field :address_state %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address_zip_code %>
+    <%= f.text_field :address_zip_code %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address_country %>
+    <%= f.text_field :address_country %>
+  </div>
+
+  <div class="field">
+    <%= f.label :logo %>
+    <%= f.text_field :logo %>
+  </div>
+
+  <% if @law_firm.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(@law_firm.errors.count, "error") %> prohibited this law_firm from being saved:</h3>
+      <ul>
+        <% @law_firm.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %> 
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
