@@ -2,3 +2,10 @@
 <p>Find me in app/views/pages/index.html.erb</p>
 
 <p>RAILS_ENV: <%= Rails.env %></p>
+
+<% if user_signed_in? %>
+  <p>Olá, <%= current_user.first_name %></p>
+  <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to "Sign in", new_user_session_path %>
+<% end %>

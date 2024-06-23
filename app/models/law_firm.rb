@@ -1,11 +1,16 @@
 require "cpf_cnpj"
 
 class LawFirm < ApplicationRecord
+    has_many :users
     validates :name, :cnpj, presence: true
     validates :contact_email, presence: true, email: true
     validate :there_can_only_be_one
     validate :valid_cnpj
 
+    def update_user_association(user)
+      user.update!(law_firm_id: id)
+    end
+    
     private
     
     def valid_cnpj
