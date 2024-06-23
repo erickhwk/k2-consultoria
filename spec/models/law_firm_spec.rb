@@ -1,4 +1,5 @@
 require 'rails_helper'
+require "cpf_cnpj"
 
 RSpec.describe LawFirm, type: :model do
     before(:each) do
@@ -6,7 +7,7 @@ RSpec.describe LawFirm, type: :model do
     end
 
     it "is valid with valid attributes" do
-        law_firm = LawFirm.new(name: "Example Law Firm", cnpj: "12345678901234")
+        law_firm = LawFirm.new(name: "Example Law Firm", cnpj: CNPJ.generate)
         expect(law_firm).to be_valid
     end
 
@@ -25,5 +26,17 @@ RSpec.describe LawFirm, type: :model do
         first_law_firm.save
         second_law_firm = LawFirm.new(name: "Example Law Firm", cnpj: "12345678901234")
         expect(second_law_firm).to_not be_valid
+    end
+
+    it 'is valid with a valid CNPJ format' do
+        law_firm = LawFirm.new(name: 'Example Law Firm', cnpj: CNPJ.generate)
+        expect(law_firm).to be_valid
+    end
+
+
+    it 'is not valid with an invalid CNPJ format' do
+        law_firm = LawFirm.new(name: 'Example Law Firm', cnpj: '12345678901234')
+        expect(law_firm).not_to be_valid
+        expect(law_firm.errors[:cnpj]).to include("is not valid")
     end
 end
