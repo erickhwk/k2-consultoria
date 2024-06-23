@@ -1,12 +1,17 @@
 <h1>Perfil do Escritório</h1>
 
-<p><strong>Nome:</strong> <%= @law_firm.name %></p>
-<p><strong>CNPJ:</strong> <%= @law_firm.cnpj %></p>
-<p><strong>Email de contato:</strong> <%= @law_firm.contact_email %></p>
-<p><strong>Endereço:</strong><%= @law_firm.address_street %></p>
-<p><strong>Complemento:</strong> <%= @law_firm.address_complement %></p>
-<p><strong>Cidade:</strong> <%= @law_firm.address_city %></p>
-<p><strong>Estado:</strong> <%= @law_firm.address_state %></p>
-<p><strong>CEP:</strong> <%= @law_firm.address_zip_code %></p>
-<p><strong>País:</strong> <%= @law_firm.address_country %></p>
+<% attributes = {
+  "Nome" => @law_firm.name,
+  "CNPJ" => @law_firm.cnpj,
+  "Email de contato" => @law_firm.contact_email,
+  "Endereço" => @law_firm.address_street,
+  "Complemento" => @law_firm.address_complement,
+  "Cidade" => @law_firm.address_city,
+  "Estado" => @law_firm.address_state,
+  "CEP" => @law_firm.address_zip_code,
+  "País" => @law_firm.address_country
+} %>
 
+<% attributes.each do |label, value| %>
+  <p><strong><%= label %>:</strong> <%= value %></p>
+<% end %>
