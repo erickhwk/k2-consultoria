@@ -4,7 +4,7 @@ class LawFirm < ApplicationRecord
     has_many :users
     validates :name, :cnpj, presence: true
     validates :contact_email, presence: true, email: true
-    validate :there_can_only_be_one
+    validate :there_can_only_be_one, on: :create
     validate :valid_cnpj
 
     def update_user_association(user)
@@ -24,9 +24,8 @@ class LawFirm < ApplicationRecord
       end
 
     def there_can_only_be_one
-        if LawFirm.count > 0
+        if LawFirm.count > 0 && new_record?
             errors.add(:base, "There can only be one law firm record")
         end
     end
-
 end

@@ -2,9 +2,7 @@ class LawFirmsController < ApplicationController
   before_action :set_law_firm, only: [:show, :edit, :update]
   before_action :authenticate_user!
 
-  def index
-    @law_firms = LawFirm.all
-  end
+
   def show
   end
 
@@ -49,8 +47,7 @@ class LawFirmsController < ApplicationController
                                      :address_state,
                                      :address_zip_code,
                                      :address_country,
-                                     :logo,
-                                      users_attributes: [:law_firm_id]
+                                     :logo
     )
   end
 end
